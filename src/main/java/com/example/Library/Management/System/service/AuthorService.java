@@ -11,7 +11,7 @@ public interface AuthorService {
     List<AuthorResponse> getAllAuthors();
     Author getAuthorById(Long id);
     void saveAuthor(Author author);
-    void updateAuthor(Long id, AuthorRequest author);
+    void updateAuthor(Long id, Author author);
     void deleteAuthor(Long id);
     List<Book> getAllBooksByAuthorId(Long id);
 
