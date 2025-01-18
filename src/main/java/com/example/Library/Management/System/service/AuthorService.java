@@ -10,7 +10,7 @@ import java.util.List;
 public interface AuthorService {
     List<AuthorResponse> getAllAuthors();
     Author getAuthorById(Long id);
-    void saveAuthor(AuthorRequest author);
+    void saveAuthor(Author author);
     void updateAuthor(Long id, AuthorRequest author);
     void deleteAuthor(Long id);
     List<Book> getAllBooksByAuthorId(Long id);

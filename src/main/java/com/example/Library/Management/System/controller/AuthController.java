@@ -1,7 +1,7 @@
 package com.example.Library.Management.System.controller;
 
 import com.example.Library.Management.System.dto.AuthRequest;
-import com.example.Library.Management.System.service.AuthService;
+import com.example.Library.Management.System.service.serviceImpl.AuthServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,23 +14,23 @@ import java.util.Map;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private final AuthService authService;
+    private final AuthServiceImpl authServiceImpl;
 
-    public AuthController(AuthService authService) {
-        this.authService = authService;
+    public AuthController(AuthServiceImpl authServiceImpl) {
+        this.authServiceImpl = authServiceImpl;
     }
 
     // 🔑 Register New User
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody AuthRequest authRequest) {
-        String token = authService.register(authRequest.getUsername(), authRequest.getPassword());
+        String token = authServiceImpl.register(authRequest.getUsername(), authRequest.getPassword());
         return ResponseEntity.ok(Map.of("message", "User registered successfully!", "token", token));
     }
 
     // 🔐 User Login
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestParam String username, @RequestParam String password) {
-        String token = authService.authenticate(username, password);
+        String token = authServiceImpl.authenticate(username, password);
         return ResponseEntity.ok(Map.of("message", "Login successful!", "token", token));
     }
 }
