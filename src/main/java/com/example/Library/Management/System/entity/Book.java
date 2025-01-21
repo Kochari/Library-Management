@@ -16,9 +16,10 @@ import java.util.List;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookId;
+    private Long id;
     private String name;
     private String isbn;
+    private Long stock;
     @ManyToMany(mappedBy = "books")
     private List<Author> authors;
     @ManyToOne

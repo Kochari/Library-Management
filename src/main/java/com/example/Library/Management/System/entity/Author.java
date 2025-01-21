@@ -17,7 +17,7 @@ import java.util.List;
 public class Author {
     @jakarta.persistence.Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     private String FirstName;
     private String LastName;
     LocalDate birthDate;

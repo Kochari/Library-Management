@@ -1,18 +1,20 @@
 package com.example.Library.Management.System.dto;
 
 import com.example.Library.Management.System.entity.Book;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class AuthorResponse {
-    private Long Id;
-    private String FirstName;
-    private String LastName;
+    Long Id;
+    String FirstName;
     LocalDate birthDate;
-    private String about;
+    String about;
     List<Book> books;
 }
 

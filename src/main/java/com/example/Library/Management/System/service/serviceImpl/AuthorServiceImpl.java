@@ -1,6 +1,5 @@
 package com.example.Library.Management.System.service.serviceImpl;
 
-import com.example.Library.Management.System.dto.AuthorRequest;
 import com.example.Library.Management.System.dto.AuthorResponse;
 import com.example.Library.Management.System.entity.Author;
 import com.example.Library.Management.System.entity.Book;
@@ -55,11 +54,12 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public void deleteAuthor(Long id) {
 
-
+authorRepository.deleteById(id);
     }
 
     @Override
     public List<Book> getAllBooksByAuthorId(Long id) {
+
         return List.of();
     }
 }

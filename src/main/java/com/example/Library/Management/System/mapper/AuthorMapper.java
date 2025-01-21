@@ -19,4 +19,5 @@ public interface AuthorMapper {
             @Mapping(target = "id", ignore = true)
     })
     Author requestToAuthor(AuthorRequest authorRequest);
+
 }

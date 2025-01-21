@@ -1,9 +1,9 @@
 package com.example.Library.Management.System.repository;
 
-import com.example.Library.Management.System.entity.Author;
+import com.example.Library.Management.System.entity.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AuthorRepository extends JpaRepository<Author, Long> {
+public interface CategoryRepository extends JpaRepository<Category, Long> {
 }
