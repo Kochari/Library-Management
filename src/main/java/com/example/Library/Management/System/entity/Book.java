@@ -1,10 +1,8 @@
 package com.example.Library.Management.System.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
@@ -13,18 +11,20 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-    private String isbn;
-    private Long stock;
+     Long id;
+     String name;
+     String isbn;
+     String description;
+     Long stockCount;
     @ManyToMany(mappedBy = "books")
-    private List<Author> authors;
+     List<Author> authors;
     @ManyToOne
     @JoinColumn(name = "categoryId", referencedColumnName = "id")
-    private Category category;
+     Category category;
     @OneToMany(mappedBy = "book")
     List<Order> orders;
 }

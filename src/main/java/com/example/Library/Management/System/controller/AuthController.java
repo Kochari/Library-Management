@@ -1,6 +1,6 @@
 package com.example.Library.Management.System.controller;
 
-import com.example.Library.Management.System.dto.AuthRequest;
+import com.example.Library.Management.System.dto.request.AuthRequest;
 import com.example.Library.Management.System.service.serviceImpl.AuthServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

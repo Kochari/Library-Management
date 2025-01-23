@@ -1,9 +1,8 @@
 package com.example.Library.Management.System.controller;
 
-import com.example.Library.Management.System.dto.AuthorResponse;
+import com.example.Library.Management.System.dto.response.AuthorResponse;
 import com.example.Library.Management.System.entity.Author;
 import com.example.Library.Management.System.service.AuthorService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

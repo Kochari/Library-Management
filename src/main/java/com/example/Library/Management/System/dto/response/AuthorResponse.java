@@ -1,4 +1,4 @@
-package com.example.Library.Management.System.dto;
+package com.example.Library.Management.System.dto.response;
 
 import com.example.Library.Management.System.entity.Book;
 import lombok.AccessLevel;

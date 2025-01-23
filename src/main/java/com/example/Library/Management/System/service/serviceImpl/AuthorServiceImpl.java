@@ -1,6 +1,6 @@
 package com.example.Library.Management.System.service.serviceImpl;
 
-import com.example.Library.Management.System.dto.AuthorResponse;
+import com.example.Library.Management.System.dto.response.AuthorResponse;
 import com.example.Library.Management.System.entity.Author;
 import com.example.Library.Management.System.entity.Book;
 import com.example.Library.Management.System.mapper.AuthorMapper;

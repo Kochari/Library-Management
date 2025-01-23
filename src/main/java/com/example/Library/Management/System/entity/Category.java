@@ -14,9 +14,9 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Category {
-    @jakarta.persistence.Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Long id;
     private String name;
     private String description;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
