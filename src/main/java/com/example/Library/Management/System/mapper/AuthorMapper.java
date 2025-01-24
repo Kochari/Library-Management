@@ -12,7 +12,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface AuthorMapper {
     AuthorResponse authorToResponse(Author author);
-    List<AuthorResponse> AllAuthorToResponse(List<Author> author);
+
 
     @Mappings(value = {
             @Mapping(target = "books", ignore = true),

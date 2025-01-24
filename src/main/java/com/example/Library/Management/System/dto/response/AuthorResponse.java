@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class AuthorResponse {
-    Long Id;
+    Long id;
     String FirstName;
     LocalDate birthDate;
     String about;

@@ -1,10 +1,8 @@
 package com.example.Library.Management.System.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 
@@ -13,11 +11,11 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+     Long id;
     LocalDate orderDate;
     LocalDate returnDate;
 

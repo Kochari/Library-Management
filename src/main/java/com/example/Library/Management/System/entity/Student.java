@@ -1,10 +1,8 @@
 package com.example.Library.Management.System.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,16 +12,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
-    private String FIN;
-    private LocalDate registrationDate;
+     Long id;
+     String firstName;
+     String lastName;
+     String email;
+     String phone;
+     String FIN;
+     LocalDate registrationDate;
     @OneToMany(mappedBy = "student")
     List<Order> orders;
 }
