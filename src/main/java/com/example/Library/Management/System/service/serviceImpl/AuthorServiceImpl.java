@@ -1,18 +1,24 @@
 package com.example.Library.Management.System.service.serviceImpl;
 
 import com.example.Library.Management.System.dto.response.AuthorResponse;
+import com.example.Library.Management.System.dto.response.BookResponse;
 import com.example.Library.Management.System.entity.Author;
 import com.example.Library.Management.System.entity.Book;
+import com.example.Library.Management.System.exception.AuthorNotFoundException;
 import com.example.Library.Management.System.mapper.AuthorMapper;
+import com.example.Library.Management.System.mapper.BookMapper;
 import com.example.Library.Management.System.repository.AuthorRepository;
 import com.example.Library.Management.System.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,20 +27,27 @@ import java.util.stream.Collectors;
 public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository authorRepository;
     private final AuthorMapper authorMapper;
+    private final BookMapper bookMapper;
 
     @Override
     public List<AuthorResponse> getAllAuthors() {
-        return authorRepository
-                .findAll()
-                .stream()
-                .map(authorMapper::authorToResponse)
-                .collect(Collectors.toList());
+        Pageable pageable = PageRequest.of(0, 10);
+        Page<Author> authors = authorRepository.findAll(pageable);
+        if (authors.isEmpty()) {
+            throw new AuthorNotFoundException("No authors found");
+        } else {
+            return authorRepository
+                    .findAll()
+                    .stream()
+                    .map(authorMapper::authorToResponse)
+                    .collect(Collectors.toList());
+        }
     }
 
     @Override
     public Author getAuthorById(Long id) {
         return authorRepository.findById(id).orElseThrow(
-                () -> new NoSuchElementException("Author not found")
+                () -> new AuthorNotFoundException("Author not found")
         );
     }
 
@@ -56,12 +69,21 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public void deleteAuthor(Long id) {
 
-authorRepository.deleteById(id);
+        authorRepository.deleteById(id);
     }
 
     @Override
-    public List<Book> getAllBooksByAuthorId(Long id) {
+    public List<BookResponse> getAllBooksByAuthorId(Long id) {
+Author author = authorRepository.findById(id).orElseThrow(AuthorNotFoundException::new);
+if (author.getBooks().isEmpty()) {
+    throw new AuthorNotFoundException("No authors found");
+}else {
+    return authorRepository
+            .findBooksByAuthorId(id)
+            .stream()
+            .map(bookMapper::bookToBookResponse)
+            .collect(Collectors.toList());
+}
 
-        return List.of();
     }
 }
