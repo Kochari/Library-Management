@@ -13,12 +13,12 @@ import java.util.List;
 @RequestMapping("/authors")
 public class AuthorController {
     AuthorService authorService;
-    @GetMapping
-    public String getAllAuthors(Model model) {
-        List<AuthorResponse> authors = authorService.getAllAuthors();
-        model.addAttribute("authors", authors);
-        return "authors";  // Renders authors.html
-    }
+//    @GetMapping
+//    public String getAllAuthors(Model model) {
+//        List<AuthorResponse> authors = authorService.getAllAuthors();
+//        model.addAttribute("authors", authors);
+//        return "authors";  // Renders authors.html
+//    }
     @GetMapping("/{id}")
     public String getAuthorById(@PathVariable Long id, Model model) {
         Author author = authorService.getAuthorById(id);

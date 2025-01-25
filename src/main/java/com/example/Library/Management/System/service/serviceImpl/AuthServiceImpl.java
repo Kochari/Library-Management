@@ -5,6 +5,7 @@ import com.example.Library.Management.System.enums.Role;
 import com.example.Library.Management.System.repository.AuthRepository;
 import com.example.Library.Management.System.security.JwtService;
 import com.example.Library.Management.System.service.AuthService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

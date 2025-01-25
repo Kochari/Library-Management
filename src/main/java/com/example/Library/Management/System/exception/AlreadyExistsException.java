@@ -1,12 +1,12 @@
 package com.example.Library.Management.System.exception;
 
-public class BookNotFoundException extends RuntimeException {
+public class AlreadyExistsException extends RuntimeException {
     private String message;
 
-    public BookNotFoundException() {
+    public AlreadyExistsException() {
     }
 
-    public BookNotFoundException(String message) {
+    public AlreadyExistsException(String message) {
         super(message);
         this.message = message;
     }

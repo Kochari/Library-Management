@@ -2,8 +2,7 @@ package com.example.Library.Management.System.service.serviceImpl;
 
 import com.example.Library.Management.System.dto.response.BookResponse;
 import com.example.Library.Management.System.entity.Book;
-import com.example.Library.Management.System.exception.BookNotFoundException;
-import com.example.Library.Management.System.exception.CategoryNotFoundException;
+import com.example.Library.Management.System.exception.NotFoundException;
 import com.example.Library.Management.System.mapper.BookMapper;
 import com.example.Library.Management.System.repository.BookRepository;
 import com.example.Library.Management.System.service.BookService;
@@ -26,11 +25,11 @@ public class BookServiceImpl implements BookService {
     private final BookMapper bookMapper;
 
     @Override
-    public List<BookResponse> getAllBooks() {
-        Pageable pageable = PageRequest.of(0, 10);
+    public List<BookResponse> getAllBooks(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
         Page<Book> books = bookRepository.findAll(pageable);
         if (books.isEmpty()) {
-            throw new BookNotFoundException("No books found");
+            throw new NotFoundException("No books found");
         } else {
             return bookRepository
                     .findAll()
@@ -43,7 +42,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookResponse getBookById(Long id) {
         Book book = bookRepository.findById(id).orElseThrow(
-                () -> new BookNotFoundException("Book not found")
+                () -> new NotFoundException("Book not found")
         );
         return bookMapper.bookToBookResponse(book);
     }
@@ -57,7 +56,7 @@ public class BookServiceImpl implements BookService {
     public void updateBook(Long id, Book book) {
 
         Book _book = bookRepository.findById(id).orElseThrow(
-                () -> new BookNotFoundException("Book not found")
+                () -> new NotFoundException("Book not found")
         );
         _book.setName(book.getName());
         _book.setAuthors(book.getAuthors());
@@ -78,7 +77,7 @@ public class BookServiceImpl implements BookService {
     public List<BookResponse> getBooksByCategory(Long categoryId) {
         List<Book> book = bookRepository.findBooksByCategoryId(categoryId);
         if (book.isEmpty()) {
-            throw new CategoryNotFoundException("Category not found");
+            throw new NotFoundException("Category not found");
         }
         else {
             return bookRepository
@@ -93,7 +92,7 @@ public class BookServiceImpl implements BookService {
     public List<BookResponse> getBooksByAuthorId(Long authorId) {
         List<Book> book = bookRepository.findBooksByAuthorId(authorId);
         if (book.isEmpty()) {
-            throw new BookNotFoundException("Book not found");
+            throw new NotFoundException("Book not found");
         }else {
             return bookRepository
                     .findBooksByAuthorId(authorId)

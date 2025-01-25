@@ -7,7 +7,7 @@ import com.example.Library.Management.System.entity.Author;
 import java.util.List;
 
 public interface AuthorService {
-    List<AuthorResponse> getAllAuthors();
+    List<AuthorResponse> getAllAuthors(int page, int size);
     Author getAuthorById(Long id);
     void saveAuthor(Author author);
     void updateAuthor(Long id, Author author);

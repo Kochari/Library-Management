@@ -7,32 +7,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 public class GlobalExceptionHandler {
-    @ExceptionHandler(AuthorNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public  @ResponseBody ErrorResponse HandleAuthorNotFoundException(AuthorNotFoundException ex){
-        return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
-    }
 
-    @ExceptionHandler(AuthorAlreadyExistsException.class)
+
+    @ExceptionHandler(AlreadyExistsException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
-    public @ResponseBody ErrorResponse HandleAuthorAlreadyExistsException(AuthorAlreadyExistsException ex){
+    public @ResponseBody ErrorResponse HandleAlreadyExistsException(AlreadyExistsException ex){
         return new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage());
     }
 
-    @ExceptionHandler(BookNotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public @ResponseBody ErrorResponse HandleBookNotFoundException(BookNotFoundException ex){
+    public @ResponseBody ErrorResponse HandleNotFoundException(NotFoundException ex){
         return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
     }
 
-    @ExceptionHandler(BookAlreadyExistsException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    public @ResponseBody ErrorResponse HandleBookAlreadyExistsException(BookAlreadyExistsException ex){
-        return new ErrorResponse(HttpStatus.CONFLICT.value(), ex.getMessage());
-    }
-    @ExceptionHandler(CategoryNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public @ResponseBody ErrorResponse CategoryNotFoundException(CategoryNotFoundException ex){
-        return new ErrorResponse(HttpStatus.NOT_FOUND.value(), ex.getMessage());
-    }
+
+
 }

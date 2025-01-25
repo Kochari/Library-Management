@@ -6,7 +6,7 @@ import com.example.Library.Management.System.entity.Book;
 import java.util.List;
 
 public interface BookService {
-    List<BookResponse> getAllBooks();
+    List<BookResponse> getAllBooks(int page, int size);
     BookResponse getBookById(Long id);
     void saveBook(Book book);
     void updateBook(Long id, Book book);
