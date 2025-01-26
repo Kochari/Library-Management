@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Table(name = "categories")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

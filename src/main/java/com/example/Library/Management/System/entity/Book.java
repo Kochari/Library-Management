@@ -12,19 +12,20 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Table(name = "books")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     Long id;
-     String name;
-     String isbn;
-     String description;
-     Long stockCount;
+    Long id;
+    String name;
+    String isbn;
+    String description;
+    Long stockCount;
     @ManyToMany(mappedBy = "books")
-     List<Author> authors;
+    List<Author> authors;
     @ManyToOne
     @JoinColumn(name = "categoryId", referencedColumnName = "id")
-     Category category;
+    Category category;
     @OneToMany(mappedBy = "book")
     List<Order> orders;
 }

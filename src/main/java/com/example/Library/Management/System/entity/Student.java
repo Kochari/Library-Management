@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Table(name = "students")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
